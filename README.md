@@ -48,9 +48,8 @@ Pipelines can have an arbitrary number of artifacts, which are identified by a n
 
 ### Build filters
 
-Builds can be filtered through the Azure API. The `filters` parameter can be included to specify any filters accepted by the API, which can be found [here](https://docs.microsoft.com/en-us/rest/api/azure/devops/build/builds/list?view=azure-devops-rest-6.0#uri-parameters).
-
-When omitted, the default filters are `&statusFilter=completed&resultFilter=succeeded`.
+The `reasonFilter` parameter can be added to filter by the reason for a build.  
+A list of accepted reasons can be found [here](https://docs.microsoft.com/en-us/rest/api/azure/devops/build/builds/list?view=azure-devops-rest-6.0#buildreason). This parameter defaults to `all` if omitted.
 
 ### Strip prefix
 
