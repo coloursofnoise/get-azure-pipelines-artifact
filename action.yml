@@ -28,9 +28,10 @@ inputs:
     required: false
     description: 'Use @actions/cache to accelerate this Action'
     default: 'true'
-  filters:
+  reasonFilter:
     required: false
-    description: 'Specify filters used for the Azure API call'
+    description: 'Filter results by the reason for the build; Defaults to "all"'
+    default: 'all'
 runs:
   using: 'node12'
   main: 'dist/index.js'
