@@ -116,7 +116,8 @@ export async function get(
   definitionId: string,
   artifactName: string,
   stripPrefix?: string,
-  reasonFilter = 'all'
+  reasonFilter = 'all',
+  branchName = ''
 ): Promise<{
   artifactName: string
   stripPrefix: string
@@ -134,11 +135,12 @@ export async function get(
     )
   }
   const baseURL = `https://dev.azure.com/${repository}/_apis/build/builds`
+  const branchFilter = branchName ? `&branchName=refs/heads/${branchName}` : ''
   const data = await fetchJSONFromURL<{
     count: number
     value: [{id: string; downloadURL: string}]
   }>(
-    `${baseURL}?definitions=${definitionId}&statusFilter=completed&resultFilter=succeeded&reasonFilter=${reasonFilter}&$top=1`
+    `${baseURL}?definitions=${definitionId}&statusFilter=completed&resultFilter=succeeded&reasonFilter=${reasonFilter}${branchFilter}&$top=1`
   )
   if (data.count !== 1) {
     throw new Error(`Unexpected number of builds: ${data.count}`)

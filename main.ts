@@ -16,7 +16,8 @@ async function run(): Promise<void> {
       core.getInput('definitionId'),
       core.getInput('artifact'),
       core.getInput('stripPrefix'),
-      core.getInput('reasonFilter')
+      core.getInput('reasonFilter'),
+      core.getInput('branchName')
     )
     const outputDirectory = core.getInput('path') || artifactName
     let useCache = core.getInput('cache') === 'true'

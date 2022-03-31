@@ -32,6 +32,10 @@ inputs:
     required: false
     description: 'Filter results by the reason for the build; Defaults to "all"'
     default: 'all'
+  branchName:
+    required: false
+    description: 'Select only builds from a specific branch'
+    default: ''
 runs:
   using: 'node12'
   main: 'dist/index.js'
